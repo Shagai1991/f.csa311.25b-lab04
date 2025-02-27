@@ -46,21 +46,25 @@ public class ArrayIntQueue implements IntQueue {
 
     /** {@inheritDoc} */
     public void clear() {
-        Arrays.fill(elementData, 0);
+        Arrays.fill(elementData, 0); // Массивын бүх элементийг 0 болгож
         size = 0;
         head = 0;
     }
+    
+    
 
     /** {@inheritDoc} */
     public Integer dequeue() {
         if (isEmpty()) {
-            return null;
+            return null;  // Хоосон бол null буцаах
         }
-        Integer value = elementData[head];
-        head = (head + 1) % elementData.length;
+        Integer value = elementData[head];  // Элементийг гаргаж авах
+        head = (head + 1) % elementData.length; // Head-ийг зөв шилжүүл
         size--;
         return value;
     }
+    
+    
 
     /** {@inheritDoc} */
     public boolean enqueue(Integer value) {
@@ -73,12 +77,12 @@ public class ArrayIntQueue implements IntQueue {
 
     /** {@inheritDoc} */
     public boolean isEmpty() {
-        return size >= 0;
+        return size == 0; // Fixed the isEmpty() method
     }
 
     /** {@inheritDoc} */
     public Integer peek() {
-        return elementData[head];
+        return size == 0 ? null : elementData[head]; // Return null if queue is empty
     }
 
     /** {@inheritDoc} */
@@ -90,19 +94,23 @@ public class ArrayIntQueue implements IntQueue {
      * Increases the capacity of this <tt>ArrayIntQueue</tt> instance, if
      * necessary, to ensure that it can hold at least size + 1 elements.
      */
-    private void ensureCapacity() {
+    
+     private void ensureCapacity() {
         if (size == elementData.length) {
             int oldCapacity = elementData.length;
             int newCapacity = 2 * oldCapacity + 1;
             int[] newData = new int[newCapacity];
-            for (int i = head; i < oldCapacity; i++) {
-                newData[i - head] = elementData[i];
+    
+            // Шилжүүлэг хийх
+            for (int i = 0; i < size; i++) {
+                newData[i] = elementData[(head + i) % oldCapacity];
             }
-            for (int i = 0; i < head; i++) {
-                newData[head - i] = elementData[i];
-            }
+    
             elementData = newData;
-            head = 0;
+            head = 0; // Өөрчлөлт хийхэд head-ийг шинэчлэх
         }
     }
+    
+    
+    
 }
