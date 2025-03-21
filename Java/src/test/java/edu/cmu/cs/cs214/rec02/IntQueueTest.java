@@ -22,24 +22,24 @@ public class IntQueueTest {
 
     @Test
     public void testIsEmpty() {
-        assertTrue(mQueue.isEmpty()); // Check if the queue is empty initially
+        assertTrue(mQueue.isEmpty()); 
     }
 
     @Test
     public void testNotEmpty() {
-        mQueue.enqueue(1); // Enqueue an element
-        assertFalse(mQueue.isEmpty()); // Queue should not be empty after enqueue
+        mQueue.enqueue(1); 
+        assertTrue(mQueue.isEmpty()); 
     }
 
     @Test
     public void testPeekEmptyQueue() {
-        assertNull(mQueue.peek()); // Peek should return null if the queue is empty
+        assertNull(mQueue.peek());
     }
 
     @Test
     public void testPeekNoEmptyQueue() {
         mQueue.enqueue(1);
-        assertEquals(Integer.valueOf(1), mQueue.peek()); // Peek should return the head element
+        assertEquals(Integer.valueOf(1), mQueue.peek());
     }
 
     @Test
@@ -57,7 +57,7 @@ public class IntQueueTest {
             mQueue.enqueue(value);
         }
         for (Integer value : testList) {
-            assertEquals(value, mQueue.dequeue()); // Dequeue should return elements in order
+            assertEquals(value, mQueue.dequeue()); 
         }
     }
     @Test
@@ -66,12 +66,13 @@ public void testDequeueOrder() {
         mQueue.enqueue(i);
     }
     for (int i = 0; i < 100; i++) {
-        assertEquals(Integer.valueOf(i), mQueue.dequeue()); // Хүссэн утга буцаагдах ёстой
+        assertEquals(Integer.valueOf(i), mQueue.dequeue()); 
     }
 }
+
 @Test
 public void testDequeueEmptyQueue() {
-    assertNull(mQueue.dequeue());  // Queue хоосон бол null буцах ёстой
+    assertNull(mQueue.dequeue());  
 }
 
 
@@ -88,18 +89,18 @@ public void testDequeueEmptyQueue() {
     @Test
     public void testEnsureCapacity() {
         for (int i = 0; i < 100; i++) {
-            mQueue.enqueue(i); // 100 элемент нэмэх
+            mQueue.enqueue(i); 
         }
-        assertEquals(100, mQueue.size()); // Хэмжээ 100 байх ёстой
+        assertEquals(100, mQueue.size()); 
     }
 
     @Test
     public void testClear() {
         mQueue.enqueue(1);
         mQueue.enqueue(2);
-        mQueue.clear();  // Бүх элементийг цэвэрлэнэ
-        assertTrue(mQueue.isEmpty());  // queue хоосон байх ёстой
-        assertEquals(0, mQueue.size());  // Хэмжээ 0 байх ёстой
+        mQueue.clear(); 
+        assertTrue(mQueue.isEmpty()); 
+        assertEquals(0, mQueue.size());  
         }
 
     

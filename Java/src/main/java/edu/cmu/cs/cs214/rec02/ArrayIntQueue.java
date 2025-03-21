@@ -41,12 +41,12 @@ public class ArrayIntQueue implements IntQueue {
     public ArrayIntQueue() {
         elementData = new int[INITIAL_SIZE];
         head = 0;
-        size = 0;
+        size = 0; 
     }
 
     /** {@inheritDoc} */
     public void clear() {
-        Arrays.fill(elementData, 0); // Массивын бүх элементийг 0 болгож
+        Arrays.fill(elementData, 0);// Массивын бүх элементийг 0 болгож
         size = 0;
         head = 0;
     }
@@ -56,7 +56,7 @@ public class ArrayIntQueue implements IntQueue {
     /** {@inheritDoc} */
     public Integer dequeue() {
         if (isEmpty()) {
-            return null;  // Хоосон бол null буцаах
+            return null;  
         }
         Integer value = elementData[head];  // Элементийг гаргаж авах
         head = (head + 1) % elementData.length; // Head-ийг зөв шилжүүл
@@ -77,12 +77,12 @@ public class ArrayIntQueue implements IntQueue {
 
     /** {@inheritDoc} */
     public boolean isEmpty() {
-        return size == 0; // Fixed the isEmpty() method
+        return size == 0; 
     }
 
     /** {@inheritDoc} */
     public Integer peek() {
-        return size == 0 ? null : elementData[head]; // Return null if queue is empty
+        return size == 0 ? null : elementData[head]; 
     }
 
     /** {@inheritDoc} */
@@ -101,13 +101,13 @@ public class ArrayIntQueue implements IntQueue {
             int newCapacity = 2 * oldCapacity + 1;
             int[] newData = new int[newCapacity];
     
-            // Шилжүүлэг хийх
+            
             for (int i = 0; i < size; i++) {
                 newData[i] = elementData[(head + i) % oldCapacity];
             }
     
             elementData = newData;
-            head = 0; // Өөрчлөлт хийхэд head-ийг шинэчлэх
+            head = 0; 
         }
     }
     
